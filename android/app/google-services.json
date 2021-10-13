@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "201527710402",
+    "project_id": "foodistaan-fa10d",
+    "storage_bucket": "foodistaan-fa10d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:201527710402:android:e243635504ddff4402215b",
+        "android_client_info": {
+          "package_name": "com.example.foodistan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "201527710402-dkomo3nu7u5itdkgorjl00ol2vj9skls.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.foodistan",
+            "certificate_hash": "479eea9ad656887cbfd8bebbb4e687338870ac19"
+          }
+        },
+        {
+          "client_id": "201527710402-epeq8m4952k6samd6q48lfmimj0s3qk8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7KtuC2VhUBU5BgnKSKzypxCebnIDtskc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "201527710402-epeq8m4952k6samd6q48lfmimj0s3qk8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
