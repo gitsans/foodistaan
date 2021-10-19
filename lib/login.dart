@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodistan/front.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+//import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
+import 'package:otp_text_field/otp_field.dart';
+import 'package:otp_text_field/style.dart';
 
 enum MobileVerificationState {
   SHOW_MOBILE_FORM_STATE,
@@ -18,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
   FirebaseAuth _auth = FirebaseAuth.instance;
   String verificationId;
   bool showLoading = false;
+  String currentText="";
 
   void signInWithPhoneAuthCredential(PhoneAuthCredential phoneAuthCredential) async{
     setState(() {
@@ -63,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 100,
           child: TextField(
             controller: phoneController,
+            //keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               focusColor: Colors.yellow,
               hintText: 'Phone Number',
@@ -149,6 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
           height: 100,
           child: TextField(
             controller: otpController,
+            keyboardType: TextInputType.number,
             decoration: const InputDecoration(
               focusColor: Colors.yellow,
               hintText: 'Enter OTP',
@@ -158,6 +165,22 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
           ),
         ),
+
+        // Container(
+        //   child: OTPTextField(
+        //     length: 6,
+        //     width: MediaQuery.of(context).size.width,
+        //     fieldWidth: 40,
+        //     style: TextStyle(
+        //         fontSize: 17
+        //     ),
+        //     textFieldAlignment: MainAxisAlignment.spaceAround,
+        //     fieldStyle: FieldStyle.underline,
+        //     onCompleted: (pin) {
+        //       print("Completed: " + pin);
+        //     },
+        //   ),
+        // ),
         Container(
           width: 319,
           height: 48,
