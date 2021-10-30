@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:foodistan/front.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
@@ -23,6 +24,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String verificationId;
   bool showLoading = false;
   String currentText="";
+  final formKey = GlobalKey<FormState>();
+  final _firestore = FirebaseFirestore.instance;
 
   void signInWithPhoneAuthCredential(PhoneAuthCredential phoneAuthCredential) async{
     setState(() {
@@ -149,6 +152,25 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           height: 40,
         ),
+        Padding(
+          padding:
+          const EdgeInsets.symmetric(horizontal: 30.0, vertical: 8),
+          child: RichText(
+            text: TextSpan(
+                text: "Sent OTP to ",
+                children: [
+                  TextSpan(
+                      text: phoneController.text,
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15)),
+                ],
+                style: TextStyle(color: Colors.black54, fontSize: 15)),
+            textAlign: TextAlign.center,
+          ),
+        ),
+
 
         Container(
           width: 200,
@@ -166,21 +188,75 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
         ),
 
-        // Container(
-        //   child: OTPTextField(
-        //     length: 6,
-        //     width: MediaQuery.of(context).size.width,
-        //     fieldWidth: 40,
-        //     style: TextStyle(
-        //         fontSize: 17
-        //     ),
-        //     textFieldAlignment: MainAxisAlignment.spaceAround,
-        //     fieldStyle: FieldStyle.underline,
-        //     onCompleted: (pin) {
-        //       print("Completed: " + pin);
-        //     },
-        //   ),
+
+
+        // Form(
+        //   key: formKey,
+        //   child: Padding(
+        //       padding: const EdgeInsets.symmetric(
+        //           vertical: 8.0, horizontal: 30),
+        //       child: PinCodeTextField(
+        //         appContext: context,
+        //         pastedTextStyle: TextStyle(
+        //           color: Colors.green.shade600,
+        //           fontWeight: FontWeight.bold,
+        //         ),
+        //         length: 6,
+        //         obscureText: true,
+        //         obscuringCharacter: '*',
+        //         obscuringWidget: FlutterLogo(
+        //           size: 24,
+        //         ),
+        //         blinkWhenObscuring: true,
+        //         animationType: AnimationType.fade,
+        //         validator: (v) {
+        //           if (v.length < 3) {
+        //             return "I'm from validator";
+        //           } else {
+        //             return null;
+        //           }
+        //         },
+        //         pinTheme: PinTheme(
+        //           shape: PinCodeFieldShape.box,
+        //           borderRadius: BorderRadius.circular(5),
+        //           fieldHeight: 50,
+        //           fieldWidth: 40,
+        //           activeFillColor: Colors.white,
+        //         ),
+        //         cursorColor: Colors.black,
+        //         animationDuration: Duration(milliseconds: 300),
+        //         enableActiveFill: true,
+        //         errorAnimationController: errorController,
+        //         controller: textEditingController,
+        //         keyboardType: TextInputType.number,
+        //         boxShadows: [
+        //           BoxShadow(
+        //             offset: Offset(0, 1),
+        //             color: Colors.black12,
+        //             blurRadius: 10,
+        //           )
+        //         ],
+        //         onCompleted: (v) {
+        //           print("Completed");
+        //         },
+        //         // onTap: () {
+        //         //   print("Pressed");
+        //         // },
+        //         onChanged: (value) {
+        //           print(value);
+        //           setState(() {
+        //             currentText = value;
+        //           });
+        //         },
+        //         beforeTextPaste: (text) {
+        //           print("Allowing to paste $text");
+        //           //if you return true then it will show the paste confirmation dialog. Otherwise if false, then nothing will happen.
+        //           //but you can show anything you want here, like your pop up saying wrong paste format or etc
+        //           return true;
+        //         },
+        //       )),
         // ),
+
         Container(
           width: 319,
           height: 48,
